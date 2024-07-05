@@ -1,11 +1,10 @@
 import FormData from "form-data";
 import fs from "fs";
 import axios from "axios";
+import { getkeyUrl, uploadUrl, zmUrl } from "./constant.js";
 
-const getkeyUrl = "https://helvid.net/upload/getkey";
-const uploadUrl = "https://vip.helvid.net/upload.php";
-const zmUrl = "https://helvid.com/index.php/ting";
 const cookie = JSON.parse(fs.readFileSync("cookie.json", "utf8")).cookies.map((cookie) => `${cookie.name}=${cookie.value}`).join("; ");
+
 const client = axios.create({
   headers: {
     Cookie: cookie,
