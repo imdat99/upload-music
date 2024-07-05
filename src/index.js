@@ -35,6 +35,7 @@ const browserWorker = (trackUrl) => connect({
         },
         trackUrl,
     );
+    
     await page.setRequestInterception(true);
     const data = await new Promise((resolve, reject) => {
         page.on('request', request => {
@@ -42,8 +43,9 @@ const browserWorker = (trackUrl) => connect({
               .$eval('#error[style="display: inline-block;"]', () => true)
               .then((r) => {
                 if(r) {
-                    response.browser.close();
-                    reject(new Error("Error"));
+                    page.screenshot({ path: 'example.png', fullPage: true }).catch(e => console.log(e.message));
+                    // response.browser.close();
+                    // reject(new Error("Error"));
                 }
               })
               .catch(() => {});

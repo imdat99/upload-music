@@ -3,7 +3,7 @@ import fs from "fs";
 import axios from "axios";
 import { getkeyUrl, uploadUrl, zmUrl } from "./constant.js";
 
-const cookie = JSON.parse(fs.readFileSync("cookie.json", "utf8")).cookies.map((cookie) => `${cookie.name}=${cookie.value}`).join("; ");
+const cookie = JSON.parse(fs.readFileSync("./src/cookie.json", "utf8")).cookies.map((cookie) => `${cookie.name}=${cookie.value}`).join("; ");
 
 const client = axios.create({
   headers: {
